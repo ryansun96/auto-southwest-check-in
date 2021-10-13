@@ -22,5 +22,11 @@ To schedule a check-in, run the following command
 $ python3 checkin.py CONFIRMATION_NUMBER FIRST_NAME LAST_NAME
 ```
 
+## Development
+To run unit tests, run the following command in the parent directory
+```shell
+$ python3 -m unittest discover
+```
+
 [0]: https://www.python.org/downloads/
 [1]: https://pip.pypa.io/en/stable/installation/

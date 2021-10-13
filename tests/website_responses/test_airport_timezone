@@ -1,0 +1,68 @@
+interactions:
+- request:
+    body: iata=LAX
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '8'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.26.0
+    method: POST
+    uri: https://openflights.org/php/apsearch.php
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAAA4SQzWrDMBCEX8XMqQUltROHJLrpWGrooRQCbTGLrRSBLRlpXZqEvHvZmP7k1KNm
+        Z0fz7QmJiccEXSiE/T5Zhs4VevqERgEFcnEIkRP0ywmeeguNKqTM+Hfb2ZTde7bRE7vgqcvM5IZC
+        4/hwbRUxjJ6j6M/esW2zJyb+O6mb0FpoP3adgiMmiTA7KLiGAjQeppe0mxXFZl7m6+12LUUldbmc
+        b8vFKi/yNRRsZz8uxQRlsRKYwbViKzclFNj19hi8EM02UGgTQ8PI5FhfjKa30TX0eleFVP9i8GGQ
+        JfqBTWGMjUiPYzTfB5Pv6lFyJhwa6v/uN89uKrO7Vdn1ec5v5y8AAAD//wMAfwUIHqkBAAA=
+    headers:
+      CF-Cache-Status:
+      - DYNAMIC
+      CF-RAY:
+      - 69cc39be1b2e638a-ORD
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - text/html
+      Date:
+      - Tue, 12 Oct 2021 00:31:29 GMT
+      Expect-CT:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      NEL:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=MyCRk0hqF%2FzC8jlOaFbBXHoVwvlgMry76XP5zDVNSwwcHaLqXA4Hh7hWPYS4WUipaaDMCWa7vWTO58846h%2FOwn%2Be9fVQvFUin9USStv5WryPE8%2BqdYJWEVY3BoBVAasNGWLg0dCg%2FBqxCqT5qxU%3D"}],"group":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Transfer-Encoding:
+      - chunked
+      alt-svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400, h3-28=":443"; ma=86400, h3-27=":443";
+        ma=86400
+      cache-control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      pragma:
+      - no-cache
+      set-cookie:
+      - PHPSESSID=i1j6e202rg0gs1b0spj0qlgqo5; path=/
+      vary:
+      - Accept-Encoding
+      x-powered-by:
+      - PHP/5.5.9-1ubuntu4.29
+    status:
+      code: 200
+      message: OK
+version: 1
