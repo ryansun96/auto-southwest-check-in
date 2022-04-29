@@ -68,5 +68,8 @@ with Flow("swa-checkin", storage=Module(__name__)) as f:
 # and set a custom image
 f.run_config = DockerRun(
     env={"SELENIUM_REMOTE_URL": "http://127.0.0.1:4444/wd/hub"},
-    image="bfdnd/southwest-check-in:latest"
+    image="bfdnd/southwest-check-in:latest",
+    host_config={
+        'network_mode': 'host'
+    }
 )
