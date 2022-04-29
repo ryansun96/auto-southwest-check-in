@@ -47,17 +47,22 @@ def get_flights_from_confirmation(confirmation_num, first_name, last_name):
     return checkin_utc
 
 
+@task()
+def schedule_check_in(scheduled_time):
+    prefect_client = Client()
+    prefect_client.create_flow_run(version_group_id="e6c12f2d-ff68-4a05-af12-db46f53b2457", parameters={'confirmation-num': confirmation_num,
+                                                                        'first-name': first_name,
+                                                                        'last-name': last_name}
+                                   , scheduled_start_time=scheduled_time)
+
+
 with Flow("get-flights-from-confirmation", storage=Module(__name__)) as f:
     confirmation_num = Parameter("confirmation-num", required=True)
     first_name = Parameter("first-name", required=True)
     last_name = Parameter("last-name", required=True)
     checkin_utc = get_flights_from_confirmation(confirmation_num, first_name, last_name)
 
-    prefect_client = Client()
-    prefect_client.create_flow_run(flow_id="4c584e7d-6d0d-445e-ac8e-ac1735959a92", parameters={'confirmation-num': confirmation_num,
-                                                                        'first-name': first_name,
-                                                                        'last-name': last_name}
-                                   , scheduled_start_time=checkin_utc)
+    schedule_check_in(checkin_utc)
 # Configure extra environment variables for this flow,
 # and set a custom image
 f.run_config = DockerRun(
