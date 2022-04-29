@@ -7,6 +7,7 @@ import json
 import time
 # import pendulum
 from prefect import task, Flow, Parameter
+from prefect.storage import Module
 
 
 @task()
@@ -45,19 +46,22 @@ def swa_checkin(confirmation_num, first_name, last_name):
             break
     url = f"/api/mobile-air-operations{checkin_json['href']}"
     js_script = f"""
+    var callback = arguments[arguments.length - 1];
     fetch({url}, {{method: "POST", headers: {checkin_header}, body: {checkin_json['body']}}})
+    .then(response => response.json())
+    .then(data => callback(data['checkInConfirmationPage']));
     """
-    driver.execute_script(js_script)
+    checkin_result = driver.execute_async_script(js_script)
 
     driver.quit()
-    return checkin_utc
+    return checkin_result
 
 
-with Flow("swa-checkin") as f:
+with Flow("swa-checkin", storage=Module(__name__)) as f:
     confirmation_num = Parameter("confirmation-num", required=True)
     first_name = Parameter("first-name", required=True)
     last_name = Parameter("last-name", required=True)
-    swa_checkin(confirmation_num, first_name, last_name)
+    checkin_result = swa_checkin(confirmation_num, first_name, last_name)
 
 
 # Configure extra environment variables for this flow,

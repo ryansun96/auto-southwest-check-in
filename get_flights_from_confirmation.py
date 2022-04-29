@@ -6,6 +6,8 @@ from seleniumwire.undetected_chromedriver import Chrome, ChromeOptions
 import json
 # import pendulum
 from prefect import task, Flow, Parameter, Client
+from prefect.storage import Module
+
 
 @task(nout=1)
 def get_flights_from_confirmation(confirmation_num, first_name, last_name):
@@ -45,7 +47,7 @@ def get_flights_from_confirmation(confirmation_num, first_name, last_name):
     return checkin_utc
 
 
-with Flow("get-flights-from-confirmation") as f:
+with Flow("get-flights-from-confirmation", storage=Module(__name__)) as f:
     confirmation_num = Parameter("confirmation-num", required=True)
     first_name = Parameter("first-name", required=True)
     last_name = Parameter("last-name", required=True)

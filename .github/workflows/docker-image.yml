@@ -39,3 +39,12 @@ jobs:
         push: ${{ github.event_name != 'pull_request' }}
         # List of tags
         tags: bfdnd/southwest-check-in:latest
+  register:
+    needs: build
+    container: bfdnd/southwest-check-in:latest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Register flows
+        run: prefect register --project default --path .
+        env:
+          PREFECT__CLOUD__API_KEY: ${{ secrets.PREFECT__CLOUD__API_KEY }}
