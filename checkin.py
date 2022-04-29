@@ -57,7 +57,7 @@ def swa_checkin(confirmation_num, first_name, last_name):
     return checkin_result
 
 
-with Flow("swa-checkin", storage=Module(__name__)) as f:
+with Flow("swa-checkin", storage=Module("checkin")) as f:
     confirmation_num = Parameter("confirmation-num", required=True)
     first_name = Parameter("first-name", required=True)
     last_name = Parameter("last-name", required=True)

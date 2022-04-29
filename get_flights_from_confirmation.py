@@ -56,7 +56,7 @@ def schedule_check_in(scheduled_time):
                                    , scheduled_start_time=scheduled_time)
 
 
-with Flow("get-flights-from-confirmation", storage=Module(__name__)) as f:
+with Flow("get-flights-from-confirmation", storage=Module("get_flights_from_confirmation")) as f:
     confirmation_num = Parameter("confirmation-num", required=True)
     first_name = Parameter("first-name", required=True)
     last_name = Parameter("last-name", required=True)
