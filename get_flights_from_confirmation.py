@@ -54,10 +54,10 @@ with Flow("get-flights-from-confirmation", storage=Module(__name__)) as f:
     checkin_utc = get_flights_from_confirmation(confirmation_num, first_name, last_name)
 
     prefect_client = Client()
-    # prefect_client.create_flow_run(flow_id="swa-checkin", parameters={'confirmation-num': confirmation_num,
-    #                                                                     'first-name': first_name,
-    #                                                                     'last-name': last_name}
-    #                                , scheduled_start_time=checkin_utc)
+    prefect_client.create_flow_run(flow_id="4c584e7d-6d0d-445e-ac8e-ac1735959a92", parameters={'confirmation-num': confirmation_num,
+                                                                        'first-name': first_name,
+                                                                        'last-name': last_name}
+                                   , scheduled_start_time=checkin_utc)
 # Configure extra environment variables for this flow,
 # and set a custom image
 f.run_config = DockerRun(
