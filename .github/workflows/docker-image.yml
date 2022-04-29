@@ -45,6 +45,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Register flows
-        run: prefect register --project default --path .
+        run: prefect register --project default --path /app
         env:
           PREFECT__CLOUD__API_KEY: ${{ secrets.PREFECT__CLOUD__API_KEY }}
